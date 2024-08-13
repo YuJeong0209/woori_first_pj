@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>우리카드 데이터 검색</title>
+</head>
+<body>
+    <h1>우리카드 데이터 검색</h1>
+    <form method="POST">
+        <p>올바른 JSON 형식의 Elasticsearch 쿼리를 입력하세요. 예:</p>
+        <pre>
+{
+    "query": {
+        "match": {
+            "필드명": "검색어"
+        }
+    }
+}
+        </pre>
+        <textarea name="query" rows="10" cols="50" placeholder="Elasticsearch 쿼리를 입력하세요"></textarea>
+        <br>
+        <input type="submit" value="검색">
+    </form>
+    <h2>검색 결과:</h2>
+    <ul>
+    {% for hit in result %}
+        <li>{{ hit._source }}</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>
